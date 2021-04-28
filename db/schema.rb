@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_28_183217) do
+ActiveRecord::Schema.define(version: 2021_04_28_194703) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -18,21 +18,52 @@ ActiveRecord::Schema.define(version: 2021_04_28_183217) do
   create_table "clubs", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "name"
   end
 
   create_table "events", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "name"
+    t.integer "winning_points"
+    t.integer "loosing_points"
+    t.integer "presence_points"
+    t.string "type"
+    t.boolean "closed"
+    t.integer "draw_points"
+    t.datetime "beginning_date"
+    t.datetime "end_date"
   end
 
   create_table "matches", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "court_number"
+    t.integer "score_firstteam"
+    t.integer "score_secondteam"
+    t.integer "player1"
+    t.integer "player2"
+    t.integer "player3"
+    t.integer "player4"
+    t.integer "player5"
+    t.integer "player6"
   end
 
   create_table "series", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.datetime "date"
+    t.integer "number_of_courts"
+    t.string "players_presents"
+    t.integer "duration"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "role"
+    t.integer "total_shots"
+    t.string "succesful_shots"
   end
 
 end
