@@ -1,6 +1,10 @@
 <%= simple_form_for [@club, @event] do |f| %>
   <%= f.input :name %>
-  <%= f.input :name %>
-  <%= f.input :name %>
+  <%= f.input :type, as: :select, collection: Event::TYPE%>
+  <%= f.input :beginning_date %>
+  <%= f.input :winning_points %>
+  <%= f.input :loosing_points %>
+  <%= f.input :presence_points %>
+  <%= f.input :draw_points %>
   <%= f.button :submit %>
 <% end %>
