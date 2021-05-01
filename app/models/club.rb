@@ -1,5 +1,5 @@
 class Club < ApplicationRecord
-  has_many :events
+  has_many :events, dependent: :destroy
   has_many :users
-  validates :name, presence: true
+  validates :name, presence: true, uniqueness: true
 end
