@@ -1,9 +1,12 @@
 Rails.application.routes.draw do
   resources :users
   root to: "home#index"
-  resources :matches
-  resources :clubs
-  resources :series
-  resources :events
+  resources :clubs do
+    resources :events do
+      resources :series do
+        resources :matches
+      end
+    end
+  end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

@@ -8,11 +8,13 @@ class ClubsController < ApplicationController
 
   # GET /clubs/1 or /clubs/1.json
   def show
+    @events = Event.all
   end
 
   # GET /clubs/new
   def new
     @club = Club.new
+    @event = Event.new
   end
 
   # GET /clubs/1/edit
