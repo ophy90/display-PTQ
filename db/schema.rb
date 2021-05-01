@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_01_091207) do
+ActiveRecord::Schema.define(version: 2021_05_01_151354) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(version: 2021_05_01_091207) do
     t.integer "winning_points"
     t.integer "loosing_points"
     t.integer "presence_points"
-    t.string "type"
+    t.string "event_type"
     t.boolean "closed"
     t.integer "draw_points"
     t.datetime "beginning_date"
