@@ -3,29 +3,34 @@ class EventsController < ApplicationController
 
   # GET /events or /events.json
   def index
+    @club = Club.find(params[:club_id])
     @events = Event.all
   end
 
   # GET /events/1 or /events/1.json
   def show
+    @club = Club.find(params[:club_id])
   end
 
   # GET /events/new
   def new
+    @club = Club.find(params[:club_id])
     @event = Event.new
   end
 
   # GET /events/1/edit
   def edit
+    @club = Club.find(params[:club_id])
   end
 
   # POST /events or /events.json
   def create
+    @club = Club.find(params[:club_id])
     @event = Event.new(event_params)
-
+    @event.club = @club
     respond_to do |format|
       if @event.save
-        format.html { redirect_to @event, notice: "Event was successfully created." }
+        format.html { redirect_to @event.club, notice: "Event was successfully created." }
         format.json { render :show, status: :created, location: @event }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -49,9 +54,11 @@ class EventsController < ApplicationController
 
   # DELETE /events/1 or /events/1.json
   def destroy
+    @club = Club.find(params[:club_id])
+    @event = Event.find(params[:id])
     @event.destroy
     respond_to do |format|
-      format.html { redirect_to events_url, notice: "Event was successfully destroyed." }
+      format.html { redirect_to club_events_path, notice: "Event was successfully destroyed." }
       format.json { head :no_content }
     end
   end
@@ -64,6 +71,6 @@ class EventsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def event_params
-      params.fetch(:event, {})
+      params.require(:event).permit(:name)
     end
 end
