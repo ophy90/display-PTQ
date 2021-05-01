@@ -4,7 +4,6 @@ class Event < ApplicationRecord
     validates :name, presence: true
     validates :winning_points, presence: true
     validates :loosing_points, presence: true
-    validates :presence_points , presence: true
     validates :draw_points , presence: true
     validates :event_type, inclusion: { in: TYPE}, presence: true
 end
