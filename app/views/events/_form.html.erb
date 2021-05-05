@@ -1,3 +1,4 @@
+<h1>Créer un evénement</h1>
 <%= simple_form_for [@club, @event] do |f| %>
   <%= f.input :name %>
   <%= f.input :event_type, as: :select, collection: Event::TYPE%>
