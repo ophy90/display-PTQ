@@ -9,6 +9,7 @@ class ClubsController < ApplicationController
   # GET /clubs/1 or /clubs/1.json
   def show
     @events = Event.all
+    @club = Club.find(params[:id])
   end
 
   # GET /clubs/new
