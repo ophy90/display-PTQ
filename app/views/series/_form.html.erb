@@ -1,17 +1,5 @@
-<%= form_with(model: series) do |form| %>
-  <% if series.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(series.errors.count, "error") %> prohibited this series from being saved:</h2>
-
-      <ul>
-        <% series.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+<%= simple_form_for :serie, url: new_club_event_series_path(@club, @event, @serie) do |f| %>
+  <%= f.input :date %>
+  <%= f.button :submit %>
 <% end %>
+
