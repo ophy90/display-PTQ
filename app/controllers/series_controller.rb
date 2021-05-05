@@ -4,6 +4,7 @@ class SeriesController < ApplicationController
   # GET /series or /series.json
   def index
     @series = Serie.all
+    @event = Event.find(params[:event_id])
   end
 
   # GET /series/1 or /series/1.json
@@ -12,7 +13,7 @@ class SeriesController < ApplicationController
 
   # GET /series/new
   def new
-    @series = Serie.new
+    @serie = Serie.new
   end
 
   # GET /series/1/edit
@@ -63,7 +64,7 @@ class SeriesController < ApplicationController
     end
 
     # Only allow a list of trusted parameters through.
-    def series_params
-      params.fetch(:series, {})
+    def event_params
+      params.require(:series).permit(:event_id, :club_id, :date, :number_of_courts, :players_presents, :duration, :number_courts)
     end
 end
