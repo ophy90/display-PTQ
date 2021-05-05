@@ -10,6 +10,9 @@ class SeriesController < ApplicationController
 
   # GET /series/1 or /series/1.json
   def show
+    @club = Club.find(params[:club_id])
+    @event = Event.find(params[:event_id])
+    @serie = Serie.find(params[:id])
   end
 
   # GET /series/new
@@ -26,13 +29,14 @@ class SeriesController < ApplicationController
   # POST /series or /series.json
   def create
     @event = Event.find(params[:event_id])
-    @series = Serie.new(serie_params)
+    @serie = Serie.new(serie_params)
     @serie.event = @event
+    @series = Serie.all
 
 
     respond_to do |format|
       if @serie.save
-        format.html { redirect_to @serie, notice: "Serie was successfully created." }
+        format.html { redirect_to club_event_series_index_path, notice: "Serie was successfully created." }
         format.json { render :show, status: :created, location: @serie }
       else
         format.html { render :new, status: :unprocessable_entity }

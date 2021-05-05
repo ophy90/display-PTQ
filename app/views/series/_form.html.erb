@@ -1,4 +1,4 @@
-<%= simple_form_for :serie, url: new_club_event_series_path(@club, @event, @serie) do |f| %>
+<%= simple_form_for :serie, url: club_event_series_index_path(@club, @event, @serie) do |f| %>
   <%= f.input :date %>
   <%= f.input :players_presents %>
   <%= f.input :number_of_courts %>
