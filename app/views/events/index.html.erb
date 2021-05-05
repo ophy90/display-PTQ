@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Events</h1>
+<h1>Vos événements</h1>
 
 <table>
   <thead>
@@ -9,14 +9,18 @@
     </tr>
   </thead>
 
+ <!-- Carousel -->
+  <h2>Saison</h2>
+  <h2>Tournois</h2>
+
   <tbody>
     <% @events.each do |event| %>
-      <tr>
-        <td><%= link_to 'Show', club_event_path(@club , event) %></td>
-        <td><%= link_to 'Edit', edit_club_event_path(@club, event) %></td>
-        <td><%= link_to 'Destroy', club_event_path(@club , event), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+      <td><%=event.name %></td>
+      <td><%= link_to 'Show', club_event_path(@club , event) %></td>
+      <td><%= link_to 'Edit', edit_club_event_path(@club, event) %></td>
+      <td><%= link_to 'Destroy', club_event_path(@club , event), method: :delete, data: { confirm: 'Are you sure?' } %></td>
     <% end %>
+    </tr>
   </tbody>
 </table>
 
