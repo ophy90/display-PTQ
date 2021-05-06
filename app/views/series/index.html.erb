@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Series</h1>
+<h1>Mêlées - <%= @event.name %></h1>
 
 <table>
   <thead>
@@ -12,9 +12,9 @@
   <tbody>
     <% @series.each do |series| %>
       <tr>
-        <td><%= link_to 'Show', series %></td>
-        <td><%= link_to 'Edit', edit_series_path(series) %></td>
-        <td><%= link_to 'Destroy', series, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <!-- link_to 'Show', club_event_series_path(@club, @event, @serie) -->
+        <!-- link_to 'Edit', edit_series_path(series) -->
+        <!-- link_to 'Destroy', series, method: :delete, data: { confirm: 'Are you sure?' } -->
       </tr>
     <% end %>
   </tbody>
@@ -22,4 +22,4 @@
 
 <br>
 
-<%= link_to 'New Series', new_series_path %>
+ <%= link_to 'New Serie', new_club_event_series_path %>
