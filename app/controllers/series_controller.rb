@@ -4,15 +4,22 @@ class SeriesController < ApplicationController
   # GET /series or /series.json
   def index
     @series = Serie.all
+    @club = Club.find(params[:club_id])
+    @event = Event.find(params[:event_id])
   end
 
   # GET /series/1 or /series/1.json
   def show
+    @club = Club.find(params[:club_id])
+    @event = Event.find(params[:event_id])
+    @serie = Serie.find(params[:id])
   end
 
   # GET /series/new
   def new
-    @series = Serie.new
+    @serie = Serie.new
+    @club = Club.find(params[:club_id])
+    @event = Event.find(params[:event_id])
   end
 
   # GET /series/1/edit
@@ -21,15 +28,19 @@ class SeriesController < ApplicationController
 
   # POST /series or /series.json
   def create
-    @series = Serie.new(series_params)
+    @event = Event.find(params[:event_id])
+    @serie = Serie.new(serie_params)
+    @serie.event = @event
+    @series = Serie.all
+
 
     respond_to do |format|
-      if @series.save
-        format.html { redirect_to @series, notice: "Serie was successfully created." }
-        format.json { render :show, status: :created, location: @series }
+      if @serie.save
+        format.html { redirect_to club_event_series_index_path, notice: "Serie was successfully created." }
+        format.json { render :show, status: :created, location: @serie }
       else
         format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @series.errors, status: :unprocessable_entity }
+        format.json { render json: @serie.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -59,11 +70,11 @@ class SeriesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_series
-      @series = Serie.find(params[:id])
+      @serie = Serie.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.
-    def series_params
-      params.fetch(:series, {})
+    def serie_params
+      params.require(:serie).permit(:event_id, :date, :number_of_courts, :players_presents, :duration, :number_courts)
     end
 end

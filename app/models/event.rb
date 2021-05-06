@@ -1,6 +1,7 @@
 class Event < ApplicationRecord
     TYPE = %w(Saison Tournoi)
     belongs_to :club
+    has_many :series
     validates :name, presence: true
     validates :winning_points, presence: true
     validates :loosing_points, presence: true
