@@ -13,6 +13,7 @@ class SeriesController < ApplicationController
     @club = Club.find(params[:club_id])
     @event = Event.find(params[:event_id])
     @serie = Serie.find(params[:id])
+    @matches = Match.all
   end
 
   # GET /series/new
@@ -32,6 +33,7 @@ class SeriesController < ApplicationController
     @serie = Serie.new(serie_params)
     @serie.event = @event
     @series = Serie.all
+    @match = Match.create
 
 
     respond_to do |format|
