@@ -17,32 +17,27 @@ class MatchesController < ApplicationController
 
   # GET /matches/1/edit
   def edit
+    @match = Match.find(params[:id])
+    # @series = Serie.find(params[:serie_id])
     # @serie = Serie.find(params[:serie_id])
     # @match.serie = @serie
-    @match = Match.new
-    @match = Match.find(params[:id])
-    # @event = Event.find(params[:event_id])
-    # @club = Club.find(params[:club_id])
-    # @matches = Match.all
-    # @match.serie.event.club = @club
-    # @club = Club.find(params[:club_id])
     # @event = Event.find(params[:event_id])
   end
 
   # POST /matches or /matches.json
-  # def create
-  #   @match = Match.new(match_params)
+  def create
+    @match = Match.new(match_params)
 
-  #   respond_to do |format|
-  #     if @match.save
-  #       format.html { redirect_to @match, notice: "Match was successfully created." }
-  #       format.json { render :show, status: :created, location: @match }
-  #     else
-  #       format.html { render :new, status: :unprocessable_entity }
-  #       format.json { render json: @match.errors, status: :unprocessable_entity }
-  #     end
-  #   end
-  # end
+    respond_to do |format|
+      if @match.save
+        format.html { redirect_to @match, notice: "Match was successfully created." }
+        format.json { render :show, status: :created, location: @match }
+      else
+        format.html { render :new, status: :unprocessable_entity }
+        format.json { render json: @match.errors, status: :unprocessable_entity }
+      end
+    end
+  end
 
   # PATCH/PUT /matches/1 or /matches/1.json
   def update
