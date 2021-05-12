@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :clubs do
     resources :events do
       resources :series do
-        resources :matches
+        resources :matches, only: [:edit, :update]
       end
     end
   end

@@ -17,13 +17,10 @@ class MatchesController < ApplicationController
 
   # GET /matches/1/edit
   def edit
-    @serie = Serie.find(params[:serie_id])
     @match = Match.find(params[:id])
-    @event = Event.find(params[:event_id])
-    # @matches = Match.all
-    @match.serie = @serie
-    @match.serie.event = @event
-    # @club = Club.find(params[:club_id])
+    # @series = Serie.find(params[:serie_id])
+    # @serie = Serie.find(params[:serie_id])
+    # @match.serie = @serie
     # @event = Event.find(params[:event_id])
   end
 

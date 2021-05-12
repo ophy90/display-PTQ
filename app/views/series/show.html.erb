@@ -4,7 +4,8 @@
 <h2>Match</h2>
 <% @matches.each do |match| %>
 <%= match.serie_id %>
+<%= link_to 'Edit', edit_club_event_series_match_path(@club, @event, @serie, match) %>
 <% end %>
-<%# <%= link_to 'Edit', edit_club_event_series_match(@match) %> |
+
 
 <%# <%= link_to 'Back', series_path %>

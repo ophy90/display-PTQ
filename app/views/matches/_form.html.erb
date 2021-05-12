@@ -1,17 +1,11 @@
-<%= form_with(model: match) do |form| %>
-  <% if match.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(match.errors.count, "error") %> prohibited this match from being saved:</h2>
-
-      <ul>
-        <% match.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+<%= simple_form_for :match, url: club_event_series_match_path do |f| %>
+  <%= f.input :score_firstteam%>
+  <%= f.input :score_secondteam%>
+  <%= f.input :player1%>
+  <%= f.input :player2%>
+  <%= f.input :player3%>
+  <%= f.input :player4%>
+  <%= f.input :player5%>
+  <%= f.input :player6%>
+  <%= f.button :submit %>
 <% end %>
