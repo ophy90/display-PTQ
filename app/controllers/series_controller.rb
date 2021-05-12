@@ -33,11 +33,11 @@ class SeriesController < ApplicationController
     @serie = Serie.new(serie_params)
     @serie.event = @event
     @series = Serie.all
-    @match = Match.create
-
 
     respond_to do |format|
       if @serie.save
+        @match = Match.new(court_number: 1, serie_id: @serie.id, player1: 0, player2: 1, player3: 2)
+        @match.save!
         format.html { redirect_to club_event_series_index_path, notice: "Serie was successfully created." }
         format.json { render :show, status: :created, location: @serie }
       else
@@ -46,6 +46,18 @@ class SeriesController < ApplicationController
       end
     end
   end
+
+# if @baby.save
+#       @baby_user =BabyUser.create(baby_id: @baby.id, user_id: current_user.id)
+#       @event = Event.new(type: "Evenement", value_string: "Bienvenue à #{@baby.name}", start_time: @baby.birth_date, baby_id: @baby.id, user_id: current_user.id)
+#       @event.photo = @baby.photo.blob
+#       @event.save!
+#       redirect_to baby_path(@baby)
+#     else
+#       render :new
+#     end
+
+
 
   # PATCH/PUT /series/1 or /series/1.json
   def update

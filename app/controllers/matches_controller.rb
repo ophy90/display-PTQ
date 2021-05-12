@@ -42,7 +42,7 @@ class MatchesController < ApplicationController
   # PATCH/PUT /matches/1 or /matches/1.json
   def update
     respond_to do |format|
-      if @match.update(match_params)
+      if @match.update!(match_params)
         format.html { redirect_to @match, notice: "Match was successfully updated." }
         format.json { render :show, status: :ok, location: @match }
       else
