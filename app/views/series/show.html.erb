@@ -1,4 +1,11 @@
 <p id="notice"><%= notice %></p>
+<h1>Les match de la serie (serie ID) du (serie date)</h1>
 
-<%= link_to 'Edit', edit_series_path(@series) %> |
-<%= link_to 'Back', series_path %>
+<h2>Match</h2>
+<% @matches.each do |match| %>
+<%= match.serie_id %>
+<%= link_to 'Edit', edit_club_event_series_match_path(@club, @event, @serie, match) %>
+<% end %>
+
+
+<%# <%= link_to 'Back', series_path %>

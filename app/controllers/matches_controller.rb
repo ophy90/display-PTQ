@@ -17,6 +17,11 @@ class MatchesController < ApplicationController
 
   # GET /matches/1/edit
   def edit
+    @match = Match.find(params[:id])
+    # @series = Serie.find(params[:serie_id])
+    # @serie = Serie.find(params[:serie_id])
+    # @match.serie = @serie
+    # @event = Event.find(params[:event_id])
   end
 
   # POST /matches or /matches.json
@@ -64,6 +69,6 @@ class MatchesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def match_params
-      params.fetch(:match, {})
+      params.require(:match).permit(:serie_id, :court_number, :player1, :player2, :player3, :player4, :player5, :player6, :score_firstteam, :score_secondteam)
     end
 end

@@ -10,16 +10,13 @@
   </thead>
 
   <tbody>
-    <% @matches.each do |match| %>
+    <%# <% @matches.each do |match| %> %>
       <tr>
-        <td><%= link_to 'Show', match %></td>
-        <td><%= link_to 'Edit', edit_match_path(match) %></td>
-        <td><%= link_to 'Destroy', match, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Edit', edit_club_event_series_match_path(@match) %></td>
       </tr>
-    <% end %>
+    <%# <% end %> %>
   </tbody>
 </table>
 
 <br>
 
-<%= link_to 'New Match', new_match_path %>
