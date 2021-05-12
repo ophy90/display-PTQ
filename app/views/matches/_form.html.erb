@@ -1,4 +1,4 @@
-<%= simple_form_for :match, url: club_event_series_match_path do |f| %>
+<%= simple_form_for :match, url: club_event_series_match_path, method: :patch  do |f| %>
   <%= f.input :score_firstteam%>
   <%= f.input :score_secondteam%>
   <%= f.input :player1%>
