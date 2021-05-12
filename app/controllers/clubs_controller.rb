@@ -28,11 +28,11 @@ class ClubsController < ApplicationController
 
     respond_to do |format|
       if @club.save
-        format.html { redirect_to @club, notice: "Club was successfully created." }
-        format.json { render :show, status: :created, location: @club }
+        format.html { redirect_to @club, notice: "#{@club.name} a été créé." }
+        # format.json { render :show, status: :created, location: @club }
       else
         format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @club.errors, status: :unprocessable_entity }
+        # format.json { render json: @club.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -41,11 +41,11 @@ class ClubsController < ApplicationController
   def update
     respond_to do |format|
       if @club.update(club_params)
-        format.html { redirect_to @club, notice: "Club was successfully updated." }
-        format.json { render :show, status: :ok, location: @club }
+        format.html { redirect_to @club, notice: "#{@club.name} a été modifié." }
+        # format.json { render :show, status: :ok, location: @club }
       else
         format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @club.errors, status: :unprocessable_entity }
+        # format.json { render json: @club.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -54,8 +54,8 @@ class ClubsController < ApplicationController
   def destroy
     @club.destroy
     respond_to do |format|
-      format.html { redirect_to clubs_url, notice: "Club was successfully destroyed." }
-      format.json { head :no_content }
+      format.html { redirect_to clubs_url, notice: "#{@club.name} a été supprimé." }
+      # format.json { head :no_content }
     end
   end
 
