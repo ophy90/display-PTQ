@@ -38,11 +38,11 @@ class SeriesController < ApplicationController
       if @serie.save
         @match = Match.new(court_number: 1, serie_id: @serie.id, player1: 0, player2: 1, player3: 2)
         @match.save!
-        format.html { redirect_to club_event_series_index_path, notice: "Serie was successfully created." }
-        format.json { render :show, status: :created, location: @serie }
+        format.html { redirect_to club_event_series_index_path, notice: "La mêlée du #{Series.date} a été créée." }
+        # format.json { render :show, status: :created, location: @serie }
       else
         format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @serie.errors, status: :unprocessable_entity }
+        # format.json { render json: @serie.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -51,11 +51,11 @@ class SeriesController < ApplicationController
   def update
     respond_to do |format|
       if @series.update(series_params)
-        format.html { redirect_to @series, notice: "Serie was successfully updated." }
-        format.json { render :show, status: :ok, location: @series }
+        format.html { redirect_to @series, notice: "La mêlée du #{Series.date} a été modifiée." }
+        # format.json { render :show, status: :ok, location: @series }
       else
         format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @series.errors, status: :unprocessable_entity }
+        # format.json { render json: @series.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -64,8 +64,8 @@ class SeriesController < ApplicationController
   def destroy
     @series.destroy
     respond_to do |format|
-      format.html { redirect_to series_url, notice: "Serie was successfully destroyed." }
-      format.json { head :no_content }
+      format.html { redirect_to series_url, notice: "La mêlée du #{Series.date} a été supprimée." }
+      # format.json { head :no_content }
     end
   end
 
