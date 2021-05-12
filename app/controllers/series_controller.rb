@@ -13,7 +13,7 @@ class SeriesController < ApplicationController
     @club = Club.find(params[:club_id])
     @event = Event.find(params[:event_id])
     @serie = Serie.find(params[:id])
-    @matches = Match.all
+    @matches = Match.where(serie: @serie)
   end
 
   # GET /series/new
@@ -46,18 +46,6 @@ class SeriesController < ApplicationController
       end
     end
   end
-
-# if @baby.save
-#       @baby_user =BabyUser.create(baby_id: @baby.id, user_id: current_user.id)
-#       @event = Event.new(type: "Evenement", value_string: "Bienvenue à #{@baby.name}", start_time: @baby.birth_date, baby_id: @baby.id, user_id: current_user.id)
-#       @event.photo = @baby.photo.blob
-#       @event.save!
-#       redirect_to baby_path(@baby)
-#     else
-#       render :new
-#     end
-
-
 
   # PATCH/PUT /series/1 or /series/1.json
   def update
