@@ -3,9 +3,9 @@ class SeriesController < ApplicationController
 
   # GET /series or /series.json
   def index
-    @series = Serie.all
     @club = Club.find(params[:club_id])
     @event = Event.find(params[:event_id])
+    @series = Serie.where(event: @event)
   end
 
   # GET /series/1 or /series/1.json
@@ -13,7 +13,7 @@ class SeriesController < ApplicationController
     @club = Club.find(params[:club_id])
     @event = Event.find(params[:event_id])
     @serie = Serie.find(params[:id])
-    @matches = Match.all
+    @matches = Match.where(serie: @serie)
   end
 
   # GET /series/new
@@ -33,11 +33,11 @@ class SeriesController < ApplicationController
     @serie = Serie.new(serie_params)
     @serie.event = @event
     @series = Serie.all
-    @match = Match.create
-
 
     respond_to do |format|
       if @serie.save
+        @match = Match.new(court_number: 1, serie_id: @serie.id, player1: 0, player2: 1, player3: 2)
+        @match.save!
         format.html { redirect_to club_event_series_index_path, notice: "Serie was successfully created." }
         format.json { render :show, status: :created, location: @serie }
       else
