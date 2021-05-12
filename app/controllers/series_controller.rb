@@ -3,9 +3,9 @@ class SeriesController < ApplicationController
 
   # GET /series or /series.json
   def index
-    @series = Serie.all
     @club = Club.find(params[:club_id])
     @event = Event.find(params[:event_id])
+    @series = Serie.where(event: @event)
   end
 
   # GET /series/1 or /series/1.json
