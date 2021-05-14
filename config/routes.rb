@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
+  devise_for :users
   resources :users
-  root to: "home#index"
+  root to: 'pages#home'
   resources :clubs do
     resources :events do
       resources :series do
