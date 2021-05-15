@@ -8,10 +8,7 @@
       <%= f.input :email, required: true, autofocus: true, input_html: { autocomplete: "email" }%>
       <%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length), input_html: { autocomplete: "new-password" } %>
       <%= f.input :password_confirmation, required: true, input_html: { autocomplete: "new-password" } %>
-      <%= f.input :password_confirmation, required: true, input_html: { autocomplete: "new-password" } %>
-      <%= f.input :club, collection: Club.all, label_method: :name, value_method: :id,label: "Club", include_blank: false, selected: @club_id %>
-
-<!--       f.association :category, prompt: "Select Category", input_html: { class: "form-control center" } -->
+      <%= f.input :club_id, collection: Club.all.map{|c| [c.name, c.id]}, label_method: :first, value_method: :second,label: "Choisissez un club", include_blank: false, selected: :club_id %>
     </div>
 
     <div class="form-actions d-flex flex-column align-items-center">
