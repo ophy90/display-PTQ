@@ -13,6 +13,7 @@ class UsersController < ApplicationController
   # GET /users/new
   def new
     @user = User.new
+    @clubs = Clubs.map{|club| club.name}
   end
 
   # GET /users/1/edit
@@ -64,6 +65,6 @@ class UsersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def user_params
-      params.fetch(:user, {})
+      params.require(:user).permit(:club_id, :email, :password, :password_confirmation)
     end
 end

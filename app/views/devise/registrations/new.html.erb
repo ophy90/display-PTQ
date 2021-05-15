@@ -1,34 +1,23 @@
 <h2>Sign up</h2>
 
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+<div>
+  <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <%= render "devise/shared/error_messages", resource: resource %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.input :email, autofocus: true, autocomplete: "email" %>
-  </div>
+    <div class="form-inputs">
+      <%= f.input :email, required: true, autofocus: true, input_html: { autocomplete: "email" }%>
+      <%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length), input_html: { autocomplete: "new-password" } %>
+      <%= f.input :password_confirmation, required: true, input_html: { autocomplete: "new-password" } %>
+      <%= f.input :password_confirmation, required: true, input_html: { autocomplete: "new-password" } %>
+      <%= f.input :club, collection: Club.all, label_method: :name, value_method: :id,label: "Club", include_blank: false, selected: @club_id %>
 
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.input :password, autocomplete: "new-password" %>
-  </div>
+<!--       f.association :category, prompt: "Select Category", input_html: { class: "form-control center" } -->
+    </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
+    <div class="form-actions d-flex flex-column align-items-center">
+      <%= f.button :submit, "Sign up", class: "mt-3 mb-3" %>
+      <%= render "devise/shared/links" %>
+    </div>
+  <% end %>
+</div>
 
-  <div class="field">
-    <%= f.label :club_id %><br />
-    <%= f.club_id_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
